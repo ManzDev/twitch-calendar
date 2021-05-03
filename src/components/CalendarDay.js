@@ -2,8 +2,12 @@ const WEEK_DAY = ["Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado
 
 export const toEuropeanFormat = (day) => day === 0 ? 6 : day - 1;
 
+const getLocalDate = () => new Date().getFullYear() + "-" +
+  (new Date().getMonth() + 1).toString().padStart(2, "0") + "-" +
+  (new Date().getDate()).toString().padStart(2, "0");
+
 const isToday = (date) => {
-  const now = new Date().toJSON().substring(0, 10);
+  const now = getLocalDate();
   const d = new Date(date);
   d.setDate(date.getDate() + 1);
   const value = now === d.toJSON().substring(0, 10);
